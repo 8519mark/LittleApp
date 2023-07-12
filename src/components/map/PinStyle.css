@@ -1,0 +1,20 @@
+
+.pin-basic {
+    --pin-width : 40;
+    --pin-height : 40;
+
+    position: absolute;
+    width: var(--pin-width);
+    height: var(--pin-height);
+    left: - var(--pin-width) / 2;
+    top: - var(--pin-height) / 2;
+
+    border: 5px solid #f44336;
+    border-radius: var(--pin-height);
+    background-color: white;
+    text-align: center;
+    color: #3f51b5;
+    font-size: 16;
+    font-weight: 'bold';
+    padding: 0.4rem;
+}

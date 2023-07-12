@@ -1,0 +1,68 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  
+}
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+:root {
+  --main-bg-color : rgb(254,176,213);
+
+  --navigation-bg-color : rgba(236, 193, 234, 0.7);
+  --navigation-border-color : rgb(159, 159, 237, 0.8);
+  --navigation-shadow-color : rgba(123, 121, 126, 0.2);
+  --navigation-text-color : rgb(115, 108, 237, 1.0);
+
+
+  --itemSection-bg-color : rgb(236, 193, 234);
+
+  --item-bg-color : rgb(254, 249, 255);
+  --item-border-color : rgb(159, 159, 237);
+  --item-shadow-color : rgba(123, 121, 126, 0.2);
+  --item-text-color : rgb(115, 108, 237, 1.0);
+}
+
+
+[mode = 'dark-mode'] {
+  --main-bg-color : rgb(12, 12, 12);
+
+  --navigation-bg-color : rgb(24, 24, 24, 0.7);
+  --navigation-border-color : rgb(179, 179, 179, 0.8);
+  --navigation-shadow-color : rgba(112, 112, 112, 0.2);
+  --navigation-text-color : rgba(253, 253, 253, 1.0);
+
+
+  --itemSection-bg-color : rgb(18, 18, 18);
+
+  --item-bg-color : rgb(40, 40, 40);
+  --item-border-color : rgb(64, 64, 64);
+  --item-shadow-color : rgba(123, 121, 126, 0.2);
+  --item-text-color : rgba(253, 253, 253);
+}
+
+[mode = 'light-mode'] {
+  --main-bg-color : rgb(254,176,213);
+
+  --navigation-bg-color : rgba(236, 193, 234, 0.7);
+  --navigation-border-color : rgb(159, 159, 237, 0.8);
+  --navigation-shadow-color : rgba(123, 121, 126, 0.2);
+  --navigation-text-color : rgb(115, 108, 237, 1.0);
+
+
+  --itemSection-bg-color : rgb(236, 193, 234);
+
+  --item-bg-color : rgb(254, 249, 255);
+  --item-border-color : rgb(159, 159, 237);
+  --item-shadow-color : rgba(123, 121, 126, 0.2);
+  --item-text-color : rgb(115, 108, 237, 1.0);
+}

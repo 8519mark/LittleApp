@@ -3,14 +3,18 @@ import {Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption} 
 import "@reach/combobox/styles.css";
 
 import { useState } from 'react'
-import { MarkerF } from "@react-google-maps/api";
 
 type latLng = google.maps.LatLngLiteral;
+type PinType = {
+    center : latLng,
+    selected : boolean
+    id : number
+}
 
 type props_Search = {
-    search : (position : latLng) => void,
-    pins : latLng[],
-    addPin : (pins : latLng[]) => void
+    doSearch : (position : latLng) => void,
+    pins : PinType[],
+    addPin : (pins : PinType[]) => void
 }
 // interface autoData {
 //     description : string,   // name, text of such place
@@ -46,20 +50,25 @@ export const Search = (props : props_Search) => {
         clearSuggestions(); // no longer need 
         const geocode = await getGeocode({address : val});
         const coord : latLng = await getLatLng(geocode[0]);
-        props.search(coord);
+        props.doSearch(coord);
         setCurrent(coord);
     };
 
 
     const addPin = () => {
         if (current === undefined) {
-            console.log('nothing to log');
+            console.log('nothing to add');
         } else if (current === previous) {
-            console.log('same location');
+            console.log('same pin');
         } else {
             setPrevious(current);
-            console.log(current);
-            props.addPin([...props.pins, current])
+            console.log("add new pin : ", current);
+            const newPin = {
+                center : current,
+                selected : false,
+                id : props.pins.length
+            }
+            props.addPin([...props.pins, newPin])
         }
     }
     

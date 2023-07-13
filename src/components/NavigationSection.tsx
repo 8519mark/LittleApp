@@ -1,5 +1,5 @@
 import './NavigationSectionStyle.css'
-import { faSun, faEnvelope, faHeart } from '@fortawesome/free-regular-svg-icons';
+import { faSun, faHeart } from '@fortawesome/free-regular-svg-icons';
 import {faEarthAmerica} from '@fortawesome/free-solid-svg-icons';
 import { faShield} from '@fortawesome/free-solid-svg-icons';
 

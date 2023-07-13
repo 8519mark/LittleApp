@@ -2,10 +2,15 @@ import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocom
 import {Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption} from '@reach/combobox'
 import "@reach/combobox/styles.css";
 
+import { useState } from 'react'
+import { MarkerF } from "@react-google-maps/api";
+
 type latLng = google.maps.LatLngLiteral;
 
 type props_Search = {
-    search : (position : latLng) => void
+    search : (position : latLng) => void,
+    pins : latLng[],
+    addPin : (pins : latLng[]) => void
 }
 // interface autoData {
 //     description : string,   // name, text of such place
@@ -15,6 +20,10 @@ type props_Search = {
 // }
 
 export const Search = (props : props_Search) => {
+    // keep track of the pin to add, avoid double click redundancy with previous state
+    const [current, setCurrent] = useState<latLng | undefined>(undefined);
+    const [previous, setPrevious] = useState<latLng | undefined>(undefined);
+
     const {
         ready,              // data ready or not
         value,              // USER input
@@ -38,10 +47,25 @@ export const Search = (props : props_Search) => {
         const geocode = await getGeocode({address : val});
         const coord : latLng = await getLatLng(geocode[0]);
         props.search(coord);
+        setCurrent(coord);
     };
+
+
+    const addPin = () => {
+        if (current === undefined) {
+            console.log('nothing to log');
+        } else if (current === previous) {
+            console.log('same location');
+        } else {
+            setPrevious(current);
+            console.log(current);
+            props.addPin([...props.pins, current])
+        }
+    }
     
     // similar structure as : https://reach.tech/combobox/
     return (
+        <div>
         <Combobox onSelect={handleSelect}>
             <ComboboxInput value = {value} onChange={handleInput} disabled = {!ready} placeholder= 'Search' />
             <ComboboxPopover>
@@ -52,5 +76,7 @@ export const Search = (props : props_Search) => {
                 </ComboboxList>
             </ComboboxPopover>
         </Combobox>
+        <button onClick={addPin}>Add pin</button>
+        </div>
     )
 };

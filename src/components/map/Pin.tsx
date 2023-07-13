@@ -3,7 +3,6 @@ import { MarkerF } from '@react-google-maps/api';
 
 type props_Pin = {
     center : {
-        // ubc
         lat : number,
         lng : number
     }

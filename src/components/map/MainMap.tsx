@@ -1,8 +1,9 @@
 import React, { useState, useRef, useCallback, useMemo } from 'react'
-import { GoogleMap } from '@react-google-maps/api';
+import { GoogleMap, DirectionsRenderer } from '@react-google-maps/api';
 
 import { Search } from './Search';
 import { Pin } from './Pin';
+import { Directions } from './Directions';
 
 
 type latLng = google.maps.LatLngLiteral;
@@ -22,6 +23,8 @@ export const MainMap = () => {
     const [search, setSearch] = useState<latLng>();
     // arbitrary number of pins
     const [pins, setPins] = useState<PinType[]>([]);
+    // directions to render
+    const [directions, setDirections] = useState<google.maps.DirectionsResult[]>([]);
 
     // record map refernce, return, not called, when rendered
     const onLoad = useCallback((map : any) => {
@@ -29,6 +32,8 @@ export const MainMap = () => {
         return curMap.current = map
     }, []);
 
+
+    // lift state up, grants the MainMap the controls of selected pins
     const onPinSelect = (id : number) : void => {
         const newPins = [...pins]
         const selectedPin = newPins.find((pin) => {
@@ -53,10 +58,11 @@ export const MainMap = () => {
 
     // another solution --> passing map as props -- 'Lift Content Up'
 
-    pins.map((pin) => {
-        console.log(pin);
-        return null;
-    })
+    // pins.map((pin) => {
+    //     console.log(pin);
+    //     return null;
+    // })
+    
 
     return (
         <div style={{ display : 'flex', flexDirection: 'row'}}>
@@ -67,9 +73,15 @@ export const MainMap = () => {
                     }}
                     pins = {pins}
                     addPin = {setPins}/>
+                <Directions pins = {pins} doMST = {(directions : google.maps.DirectionsResult[]) => {
+                    setDirections(directions)
+                }}/>
             </div>
             <div style={{ height : '85vh', width : '90%', marginRight: '10px',}}>
             <GoogleMap zoom = {15} center = {center} mapContainerClassName='map-container' onLoad = {onLoad}>
+                {directions.map((direction) => (
+                    <DirectionsRenderer options={{ directions: direction }}/>
+                ))}
                 {pins.map((pin) => (
                     <Pin pin = {pin} doSelect={onPinSelect}/>
                 ))}

@@ -1,5 +1,4 @@
 import './PinStyle.css'
-import { GoogleMap } from '@react-google-maps/api';
 import { Marker } from '@react-google-maps/api';
 
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
@@ -22,6 +21,7 @@ const selectedColor = '#ff0000'
 const notSelectedColor = '#ced4da'
 
 
+
 export const Pin = (props : props_Pin) => {
     const [color, setColor] = useState(props.pin.selected? '#007bff' : '#ced4da');
 
@@ -30,7 +30,7 @@ export const Pin = (props : props_Pin) => {
         // change to select/notSelect color here
         const newColor = props.pin.selected ? selectedColor : notSelectedColor;
         setColor(newColor);
-        console.log(newColor)
+        // console.log(newColor)
     }
 
     return (

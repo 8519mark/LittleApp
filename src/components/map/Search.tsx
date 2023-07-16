@@ -57,12 +57,12 @@ export const Search = (props : props_Search) => {
 
     const addPin = () => {
         if (current === undefined) {
-            console.log('nothing to add');
+            // console.log('nothing to add');
         } else if (current === previous) {
-            console.log('same pin');
+            // console.log('same pin');
         } else {
             setPrevious(current);
-            console.log("add new pin : ", current);
+            // console.log("add new pin : ", current);
             const newPin = {
                 center : current,
                 selected : false,

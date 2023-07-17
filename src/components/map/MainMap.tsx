@@ -73,14 +73,14 @@ export const MainMap = () => {
                     }}
                     pins = {pins}
                     addPin = {setPins}/>
-                <Directions pins = {pins} doMST = {(directions : google.maps.DirectionsResult[]) => {
+                <Directions pins = {pins} doTSP = {(directions : google.maps.DirectionsResult[]) => {
                     setDirections(directions)
                 }}/>
             </div>
             <div style={{ height : '85vh', width : '90%', marginRight: '10px',}}>
             <GoogleMap zoom = {15} center = {center} mapContainerClassName='map-container' onLoad = {onLoad}>
                 {directions.map((direction) => (
-                    <DirectionsRenderer options={{ directions: direction }}/>
+                    <DirectionsRenderer options={{ directions: direction , suppressMarkers : true}}/>
                 ))}
                 {pins.map((pin) => (
                     <Pin pin = {pin} doSelect={onPinSelect}/>

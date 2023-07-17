@@ -1,0 +1,35 @@
+.front-page {
+    display : flex;
+    flex-direction : row;
+    flex-wrap : nowrap;
+    justify-content : space-around;
+    align-items : flex-start;
+
+    padding : 70px;
+    background-color : var(--itemSection-bg-color);
+    color : var(--navigation-text-color);
+    
+    transition : color 600ms ease-in-out, background-color 400ms ease-in-out;
+}
+
+.front-page-img {
+    width : 100%;
+    height : auto;
+}
+
+.front-page-text {
+    color : var(--navigation-text-color);
+    border-bottom : 2px solid var(--navigation-text-color);
+
+    transition : color 600ms ease-in-out, border-bottom 600ms ease-in-out;
+}
+
+.front-page-text:hover {
+    font-weight : 1000;
+    transition : 200ms ease;
+}
+
+.front-page-text:not(:hover) {
+    font-weight : 700;
+    transition : 200ms ease;
+}

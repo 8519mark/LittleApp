@@ -2,7 +2,7 @@ import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { useState} from 'react'
-import '../../App.css';
+import '../App.css';
 
 type props_ColorMode = {
     image : IconDefinition; // link image

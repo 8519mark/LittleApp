@@ -34,11 +34,12 @@ export const Pin = (props : props_Pin) => {
     }
 
     return (
-        <Marker position = {props.pin.center} key = {props.pin.id} icon = {{path : faLocationDot.icon[4] as string, 
-            fillColor: color, 
-            fillOpacity: 1, anchor: new google.maps.Point(faLocationDot.icon[0] / 2, faLocationDot.icon[1]), strokeWeight: 1,
-            strokeColor: "#000000", scale: 0.080
-        }}
+        <Marker position = {props.pin.center} key = {props.pin.id} 
+            icon = {{path : faLocationDot.icon[4] as string, 
+                fillColor: color, 
+                fillOpacity: 1, anchor: new google.maps.Point(faLocationDot.icon[0] / 2, faLocationDot.icon[1]), strokeWeight: 1,
+                strokeColor: "#000000", scale: 0.080
+            }}
             onClick={handleSelect}/>
     );
 };

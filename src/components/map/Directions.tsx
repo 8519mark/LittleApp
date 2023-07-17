@@ -11,7 +11,7 @@ type PinType = {
 
 type props_Directions = {
     pins : PinType[],
-    doMST : (directions : google.maps.DirectionsResult[]) => void,
+    doTSP : (directions : google.maps.DirectionsResult[]) => void,
 }
 
 export const Directions = (props : props_Directions) => {
@@ -22,8 +22,9 @@ export const Directions = (props : props_Directions) => {
     const handleClick = async () => {
         try {
             setLoading(true);
-            const results = await directionFacade.addVertices(props.pins, google.maps.TravelMode.DRIVING);
-            props.doMST(results);
+            const temp = await directionFacade.addVertices(props.pins, google.maps.TravelMode.DRIVING);
+            const results = directionFacade.performTSP();
+            props.doTSP(results);
             console.log('Directions Clicked');
             console.log(results.length);
           } catch (error) {

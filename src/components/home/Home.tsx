@@ -1,7 +1,7 @@
 import { NavigationSection } from '../NavigationSection';
-import { ItemsSection } from './ItemsSection';
-import { AboutSection } from './AboutSection';
+import { FrontPage } from './FrontPage';
 
+import { paragraphs } from './paragraphs';
 
 export const Home = () => {
     return (
@@ -10,8 +10,11 @@ export const Home = () => {
                 <NavigationSection />
             </div>
             <div className = "mid-content">
-                <ItemsSection />
-                <AboutSection />
+                {paragraphs.map((paragraph) => (
+                    <FrontPage head = {paragraph.head} body = {paragraph.body} 
+                    imageOnRight = {paragraph.imageOnRight} image = {paragraph.image} imagePercent={paragraph.imagePercent}
+                    tryMap = {paragraph.tryMap}/>
+                ))}
             </div>
         </div>
     )
